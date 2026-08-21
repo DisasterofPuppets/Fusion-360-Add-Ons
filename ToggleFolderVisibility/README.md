@@ -62,8 +62,8 @@ via Fusion's own UI:
 You can also reach the same dialog from **Tools** tab → **Keyboard
 Shortcuts**, then search by the command name.
 
-**Shortcuts used in the screenshot above:** `Z` for Toggle Bodies Folder,
-`X` for Toggle Sketches Folder — neither is a default Fusion shortcut in
+**Shortcuts used in the screenshot above:** `z` for Toggle Bodies Folder,
+`Ctrl+Alt+z` for Toggle Sketches Folder — neither is a default Fusion shortcut in
 the Design workspace, so there's nothing to override. Pick any key you
 like; these are just what's shown.
 
