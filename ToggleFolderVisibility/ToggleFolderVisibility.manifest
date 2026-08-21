@@ -1,0 +1,20 @@
+{
+    "autodeskProduct": "Fusion360",
+    "type": "addin",
+    "author": "",
+    "description": {
+        "": "Toggles the Bodies folder and Sketches folder light bulb (visibility) for the active component, independent of individual body/sketch visibility."
+    },
+    "editEnabled": true,
+    "iconFilename": "",
+    "id": "ToggleFolderVisibility",
+    "name": "Toggle Folder Visibility",
+    "productSupport": {
+        "": [
+            "Fusion360"
+        ]
+    },
+    "supportedOS": "windows|mac",
+    "supportsMultipleAddInInstances": false,
+    "version": "1.0.0"
+}
