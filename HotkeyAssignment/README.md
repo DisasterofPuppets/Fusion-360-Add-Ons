@@ -77,5 +77,4 @@ add-in won't fabricate one. Instead:
 
 ## License
 
-Not yet licensed — add one (MIT is a common choice for small Fusion add-ins) before treating
-this as open source.
+MIT — see `LICENSE`.
