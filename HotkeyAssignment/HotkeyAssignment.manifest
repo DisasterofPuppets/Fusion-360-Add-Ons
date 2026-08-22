@@ -1,0 +1,10 @@
+{
+    "autodeskProduct": "Fusion360",
+    "type": "addin",
+    "author": "Matt",
+    "description": {
+        "": "Hotkey Assignment - view, search, and edit Fusion 360 keyboard shortcuts from one window."
+    },
+    "supportedOS": "windows",
+    "editEnabled": true
+}
