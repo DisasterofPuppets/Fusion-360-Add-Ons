@@ -6,9 +6,7 @@ folder with its own README covering what it does and how to install it.
 | Add-in | Description |
 |--------|--------------|
 | [ToggleFolderVisibility](ToggleFolderVisibility/) | Toggles the Bodies/Sketches folder light bulb for the active component, without disturbing individual body/sketch visibility. Can be bound to a keyboard shortcut. |
-|--------|--------------|
-| [HotkeyAssignment](HotkeyAssignment/) | Brings back a GUI to set hotkeys while allowing export and import |
-|--------|--------------|
+| [HotkeyAssignment](HotkeyAssignment/) | Brings back a GUI to set hotkeys while allowing import and export. |
 
 ## Installing any add-in in this repo
 
