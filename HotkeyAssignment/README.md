@@ -1,29 +1,49 @@
 # Hotkey Assignment — Fusion 360 Add-In
 
 A missing menu for Fusion 360: one window listing every command with a keyboard shortcut,
-searchable, with a real Change button per row instead of digging through right-click menus one
-command at a time.
+searchable and grouped by workspace, with a real Change button per row instead of digging
+through right-click menus one command at a time.
 
 ![Add-Ins menu](screenshots/addins-menu.png)
 
-Lives under **UTILITIES tab → ADD-INS → Hotkey Assignment** (Design workspace).
+Lives under **UTILITIES tab → ADD-INS** (Design workspace) as two controls: **Hotkey Assignment**
+(a direct click, opens the table) and **Hotkey Tools** (a dropdown nesting Import Hotkeys, Export
+Current Hotkeys, and Reset to Default).
 
 ## What it does
 
+![Workspace filter](screenshots/workspace-dropdown.png)
+
 ![Main window](screenshots/main-window.png)
 
-- **Function Name / Hotkey / Change** table, built by reading Fusion's own live hotkey file.
-- **Search** box filters the list live, by name or internal command ID.
+- **Function Name / Hotkey / Change** table, built by reading Fusion's own live hotkey file,
+  grouped by workspace (Design/General, Animation, Manufacture, Drawing, Electronics, Simulation
+  — a best-effort grouping from command ID naming patterns, not an official Autodesk mapping).
+- **Workspace** dropdown filters the table down to one group; **Search** filters by name or
+  internal command ID on top of that.
+- Rows that share an identical display name (Fusion reuses generic labels like "Copy" across
+  several distinct, context-specific commands) get their internal command ID appended in
+  brackets so you can tell them apart.
+- Hotkeys you've changed from Fusion's own default are marked **· Custom** in the Hotkey column.
 - **Change** (pencil icon) opens Fusion's own native "assign new hotkey" popup for that command —
   key capture and conflict/override prompts are handled by Fusion itself.
-- **Export Current Hotkeys** (↑) saves your full current hotkey set to a `.json` file you choose.
-- **Import Hotkeys** (↓) loads a previously exported `.json` file — validated against Fusion's
-  schema before anything is touched; a malformed file is rejected with the specific reason why.
-- **Reset to Default** (↻) restores a saved baseline. See below for how that baseline is built.
+- **Hotkey Tools → Export Current Hotkeys** saves your full current hotkey set to a `.json` file
+  you choose.
+- **Hotkey Tools → Import Hotkeys** loads a previously exported `.json` file — validated against
+  Fusion's schema before anything is touched; a malformed file is rejected with the specific
+  reason why.
+- **Hotkey Tools → Reset to Default** restores a saved baseline. See below for how that's built.
 
-| Import | Export | Reset to Default |
-|---|---|---|
-| ![Import tooltip](screenshots/action-import.png) | ![Export tooltip](screenshots/action-export.png) | ![Reset tooltip](screenshots/action-reset.png) |
+## Why Import/Export/Reset are nested in a separate dropdown
+
+They started out as buttons inside the Hotkey Assignment table window. Fusion's native
+file-picker (used by Import/Export) opened from inside an already-running command's event
+handler left that command unresponsive to further clicks afterwards — a second click on Import
+or Export did nothing until the whole window was closed and reopened. Making them their own
+single-purpose commands, nested under a "Hotkey Tools" dropdown rather than sitting inside the
+table window, sidesteps the problem: each is a fresh command every click, not a widget living
+inside another still-open dialog. "Hotkey Assignment" stays a direct single click since it
+doesn't touch a file dialog.
 
 ## Install
 
@@ -70,6 +90,9 @@ add-in won't fabricate one. Instead:
 
 - Only added to the Design workspace toolbar (`FusionSolidEnvironment`) — not Manufacture,
   Simulation, or Drawing.
+- Workspace grouping is a naming-pattern heuristic (see `classify_workspace()`), not an official
+  Autodesk mapping. Render has no distinct command ID prefix found in practice, so it isn't a
+  selectable group — anything Render-specific lands in Design/General.
 - An unfiltered list is capped at 400 rows for performance — use Search to narrow it down.
 - Function names fall back to the raw command ID when the owning workspace/extension (e.g.
   Simulation, Electronics) isn't currently loaded, since Fusion hasn't registered that command's
@@ -77,4 +100,4 @@ add-in won't fabricate one. Instead:
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see [LICENSE](LICENSE).
