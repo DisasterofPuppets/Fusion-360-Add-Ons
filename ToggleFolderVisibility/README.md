@@ -48,7 +48,8 @@ eyeball on the folder yourself.
 4. Two buttons appear on **Solid** tab → **Modify** panel:
    - **Toggle Bodies Folder**
    - **Toggle Sketches Folder**
-
+(If the folders don't show, simply restart Fusion 360)
+   
 ## Assigning keyboard shortcuts
 
 Fusion's API can't silently bind a global hot key — you assign one once,
